@@ -1,0 +1,50 @@
+johnpickup:
+  Type: PILLAGER
+  Display: 'Pickup'
+  Health: 20
+  Damage: 5
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Despawn: false
+    Silent: true
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    KnockbackResistance: 0.8
+    MovementSpeed: 0.35
+    PreventSunburn: true
+    Anger: 99
+    FollowRange: 99
+    Collidable: false
+  AIGoalSelectors:
+  - 0 clear 
+  AITargetSelectors: 
+  - 0 clear
+  BossBar:
+    Enabled: true
+    Title: '&6Pickup'
+    Range: 10
+    Color: BLUE
+    Style: SOLID
+  Skills:
+  - model{mid=pickup;drive=true} @self ~onSpawn
+  - sound{s=block.blastfurnace.fire_crackle;p=1.8} @self ~onTimer:12
+  - particles{p=CAMPFIRE_COSY_SMOKE;a=1;hs=0.25;vs=0.1;speed=0.05} @forward{f=-1.2} ~onTimer:5 ?moving
+  - particles{p=FLAME;a=15;hs=1;vs=0.1;speed=0.25;directional=true} @forward{f=-4} ~onTimer:2 ?moving
+  - mountmodel{} @trigger ~onInteract
+
+  - skill{s=[
+    - particles{p=BLOCK_CRACK;m=RED_WOOL;a=5;hs=0.25;vs=0.5;y=1} @self
+    - sound{v=4;s=entity.iron_golem.hurt;p=0.3} @self 
+    ]} @self ~onDamaged
+
+  - summon{type=MWOFPickupDeath;amount=1;radius=0;summonerIsOwner=true} @SelfLocation ~onDeath 1
+  - remove @self ~onDeath 1
+    
+  - Aura{auraName=LightCar;interval=100;duration=999999} @self ~onSpawn
+  - Aura{auraName=Brake;interval=10;duration=99999} @self ~onSpawn
+  - Aura{auraName=SpeedUp;interval=10;duration=99999} @self ~onSpawn
+  - skill{s=MWOFPickupPassangerMount} @trigger ~onInteract
+  

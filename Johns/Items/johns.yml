@@ -1,0 +1,19 @@
+# For more information, check out the plugin manual or join us on Discord:
+# http://www.mythicmobs.net
+#  
+SuperMilk:
+      Id: potion
+      Display: '&f&lSuper Milk'
+      Options:
+        Color: 255,255,255
+        HideFlags: true
+      PotionEffects:
+      - HEAL 3 1
+      - DAMAGE_RESISTANCE 200 5
+      - REGENERATION 200 5
+      - SPEED 200 5
+      Lore:
+      - '&9Instant Health'
+      - '&9Resistance V (00:10)'
+      - '&9Regeneration V (00:10)'
+      - '&9Swiftness V (00:10)'

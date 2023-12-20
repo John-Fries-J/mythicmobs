@@ -1,0 +1,350 @@
+SHEEP:
+  Display: 'jeb_'
+  Damage: 1
+  Faction: john
+  AIGoalSelectors:
+  - clear 
+  - shoot
+  - meleeattack
+  - randomlookaround
+  - randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Drops: 
+  - BOW 1 0.5
+  - ARROW 1-5 1
+  Skills:
+  - shoot{type=ARROW;velocity=0.5;vspread=10;damage=1} @Ring ~onTimer:30
+PIG:
+  Damage: 2
+  AIGoalSelectors:
+  - clear 
+  - meleeattack
+  - randomlookaround
+  - randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Skills:
+  - model{mid=pig_w_swordv2} @self ~onSpawn
+  - skill{s=[
+    - state{s=attack} @self
+    - damage{a=<caster.damage>} @target ?targetwithin{d=2.5}
+    ]} @self ~onAttack
+  Drops: 
+  - ENDER_PEARL 1 0.75
+CHICKEN:
+  Damage: 2
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomlookaround
+  - randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.35
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Drops: 
+  - IRON_INGOT 1-10 1
+  Skills:
+  - model{mid=tnt_chicken} @self ~onSpawn
+  - skill{s=[
+    - state{s=explode} @self
+    - explosion{yield=0.1} @target
+    - effect:particles{p=cloud;amount=1000;spread=5}
+    - delay 4
+    - remove @self 
+    ]} @self ~onAttack
+VILLAGER:
+  Damage: 2
+  AIGoalSelectors:
+  - clear
+  - meleeattack
+  - randomlookaround
+  - randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.25
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Drops: 
+  - DIAMOND 1-3 0.25
+  - GOLD_INGOT 1-3 0.25
+  - LAPIS_LAZULI 1-3 1
+  - EMERALD 1-3 0.25
+  - exp 100 1
+COW:
+  Type: WITCH
+  Disguise: COW
+  Faction: john
+  Damage: 2
+  Options:
+    MovementSpeed: 0.35
+  Drops: 
+  - GOLDEN_APPLE 1 1
+  - SuperMilk 1 0.7
+HORSE:
+  AITargetSelectors:
+  - clear
+  - players
+  AIGoalSelectors:
+  - clear
+  - bowattack
+  Type: SKELETON
+  Disguise: HORSE
+  Options:
+    NoAI: false
+    PreventSunburn: true 
+  Skills:
+  - projectile{bulletType=MOB;mob=AXOLOTL} @target ~onTimer:15
+  Drops: 
+  - BLAZE_ROD 1-3 1
+Squid23:
+  Type: PHANTOM
+  Health: 20
+  Damage: 2
+  Disguise: SQUID setSpinning setGlowing
+  Modules:
+    ThreatTable: true
+  Options:
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    NoAI: false
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    PreventSunburn: true 
+    Anger: 500
+  Drops: 
+   - MEM-Feastable 1-3 1
+BAT:
+  Type: PHANTOM
+  Disguise: BAT
+  Damage: 2
+  Modules:
+    ThreatTable: true
+  Options:
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    NoAI: false
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    PreventSunburn: true 
+    Anger: 500
+    MovementSpeed: 1
+  Drops: 
+   - IRON_INGOT 1-3 1
+PARROT:
+  Type: PHANTOM
+  Disguise: PARROT
+  Damage: 2
+  Modules:
+    ThreatTable: true
+  Options:
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    NoAI: false
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    PreventSunburn: true 
+    Anger: 500
+    MovementSpeed: 1
+  Drops: 
+   - IRON_INGOT 1-3 1
+FROG:
+  Damage: 2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 randomstroll
+  - 2 meleeattack
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.25
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Skills:
+  - skill{s=[
+    - jump{velocity=1}
+    - delay 2
+    - damage
+    ]} @self ~onAttack
+AXOLOTL:
+  Damage: 2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.25
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Skills:
+  - skill{s=[
+    - jump{velocity=1}
+    - delay 2
+    - damage
+    ]} @self ~onAttack
+RABBIT:
+  Damage: 2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.8
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Drops: 
+   - MEM-Feastable 1-3 1
+TURTLE:
+  Damage: 2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+  Skills:
+  - projectile{bulletType=MOB;mob=CHICKEN} @target ~onTimer:10
+  Drops: 
+   - IRON_INGOT 1-3 1
+PANDA:
+  Damage: 2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    MovementSpeed: 0.25
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+  Drops: 
+   - DIAMOND 1-3 1
+POLAR_BEAR:
+  Damage: 2
+  AIGoalSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AITargetSelectors:
+  - clear
+  - players
+  - attacker
+  Modules:
+    ThreatTable: true
+  Options:
+    NoDamageTicks: 1
+    FollowRange: 120
+    KnockbackResistance: 1
+    Despawn: true
+    Invincible: false
+    MaxCombatDistance: 30
+    Anger: 999
+    Anger: 999
+  Skills:
+  - freeze{ticks=100} @trigger ~onAttack
+  Drops: 
+   - GOLD_INGOT 1-3 1
