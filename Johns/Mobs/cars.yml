@@ -82,3 +82,38 @@ rav4:
     - particles{p=POOF;a=10;hs=0.25;vs=0.5;y=1;speed=0.1} @self
     - sound{v=4;s=entity.iron_golem.death;p=0.3} @self
     ]} @self ~onDeath
+van:
+  Type: PILLAGER
+  Display: 'van'
+  Health: 20
+  Damage: 5
+  AIGoalSelectors:
+  - clear
+  AITargetSelectors:
+  - clear
+  Options:
+    Silent: true
+    PreventOtherDrops: true
+    PreventRandomEquipment: true
+    KnockbackResistance: 0.8
+    MovementSpeed: 0.35
+    PreventSunburn: true
+    Anger: 99
+    FollowRange: 99
+    Collidable: false
+  Skills:
+  - model{mid=van;drive=true} @self ~onSpawn
+  - sound{s=block.blastfurnace.fire_crackle;p=1.8} @self ~onTimer:12
+  - particles{p=CAMPFIRE_COSY_SMOKE;a=1;hs=0.25;vs=0.1;speed=0.05} @forward{f=-1.2} ~onTimer:5 ?moving
+  - particles{p=FLAME;a=15;hs=1;vs=0.1;speed=0.25;directional=true} @forward{f=-4} ~onTimer:2 ?moving
+  - mountmodel{} @trigger ~onInteract
+
+  - skill{s=[
+    - particles{p=BLOCK_CRACK;m=RED_WOOL;a=5;hs=0.25;vs=0.5;y=1} @self
+    - sound{v=4;s=entity.iron_golem.hurt;p=0.3} @self 
+    ]} @self ~onDamaged
+
+  - skill{s=[
+    - particles{p=POOF;a=10;hs=0.25;vs=0.5;y=1;speed=0.1} @self
+    - sound{v=4;s=entity.iron_golem.death;p=0.3} @self
+    ]} @self ~onDeath
